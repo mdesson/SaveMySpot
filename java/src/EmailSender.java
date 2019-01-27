@@ -4,15 +4,48 @@ import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
+	// Main Program
+	
     public static void main(String args[]){
-        try{
+        
+    	//Test Array
+    	String[] inputs = {"COMP232", "1", "0", "seanheinrichs@gmail.com"};
+    	
+    	sendMail(inputs);
+    		
+    }
+    
+    // This method checks to see if there is any room on the wait list, if so, return true, otherwise false
+    public static boolean checkWaitList(String[] inputs){
+    	if (inputs[1].equals("0")){
+    		return false;
+    	}
+    	else
+    		return true;
+    }
+    
+    public static void sendMail(String[] inputs){
+    	
+    	//Extract pertinent information from the Array
+    	String courseCode = inputs[0];
+    	String waitList = inputs[1];
+    	String userEmail = inputs[3];
+    	
+    	// Returns true if there is room on the wait list
+    	boolean roomOnWaitList = checkWaitList(inputs);
+    	
+    	try{
             String host ="smtp.gmail.com" ;
             String user = "savemyspotconcordia@gmail.com";
             String pass = "conuhacks2019";
-            String to = "seanheinrichs@gmail.com";
+            String to = userEmail;
             String from = "savemyspotconcordia@gmail.com";
-            String subject = "This is confirmation number for your expertprogramming account. Please insert this number to activate your account.";
-            String messageText = "Your Is Test Email :";
+            String waitListSubject = "[" + courseCode  + "] There is room on the waitlist! Head over to myConcorida to register right away!";
+            String roomInClassSubject = "[" + courseCode  + "] There is room in your course! Head over to myConcordia to register right away!";
+            String messageTextWaitList = courseCode + " has room has at least 1 spot open on the wait list! Head over to myConcordia to sign "
+            		+ "up right away before it gets filled. Thanks for using Save My Spot!";
+            String messageTextInClass = courseCode + " has room has at least 1 spot available in the course! Head over to myConcordia to sign "
+            		+ "up right away before it gets filled. Thanks for using Save My Spot!";
             boolean sessionDebug = false;
 
             Properties props = System.getProperties();
@@ -29,8 +62,16 @@ public class EmailSender {
             msg.setFrom(new InternetAddress(from));
             InternetAddress[] address = {new InternetAddress(to)};
             msg.setRecipients(Message.RecipientType.TO, address);
-            msg.setSubject(subject); msg.setSentDate(new Date());
-            msg.setText(messageText);
+            if (roomOnWaitList){
+            	msg.setSubject(waitListSubject); msg.setSentDate(new Date());
+            	msg.setText(messageTextWaitList);
+            }
+            else {
+            	msg.setSubject(roomInClassSubject); msg.setSentDate(new Date());
+            	msg.setText(messageTextInClass);
+            }
+            
+            
 
            Transport transport=mailSession.getTransport("smtp");
            transport.connect(host, user, pass);
