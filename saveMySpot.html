@@ -9,7 +9,7 @@
 </head>
 
 <body id="bg">
-
+<!--onsubmit="validity(); return false"-->
 
 <div class='table'>
  
@@ -17,18 +17,27 @@
  
         <div class="container">
  
-            <form id="login" method="post" onsubmit="validity(); return false">
+            <form id="login" method="POST" action="script/index.php">
                 <img src="pictures/help_icon.png" title="Help" alt="Help" class="icon" onclick="alert('Welcome to SaveMySpot for Concordia!\nThis website is to help you get notifications on classes you are interested to join.\nEnter the required information to receive a daily email about the interested class.')">  
                 <br/>
                         <label class="containerInput">Enter Your Email:</label> <br />
-                        <input class="inputBox" required="required" type="email" id="emailCR" name="email"/> <br />
+                        <input class="inputBox" required="required" type="email" id="emailCR" name="email"/><br />
                         <label class="containerInput">Enter Course Subject :</label> <br />
-                         <input class="inputBox" required="required" type="text" id="courseSubject" name="courseSubject"/>
+                         <input class="inputBox" required type="text" id="courseSubject" name="courseSubject" oninvalid="alert('Please enter a valid course subject!');" pattern="[A-Za-z]{4}"/> 
                          <br />
+
                          <label class="containerInput">Course  Number :</label><br />
-                         <input class="inputBox" required="required" type="text" id="courseNb" name="courseNb"/>
+                         <input class="inputBox" required="required" type="text" id="courseNb" name="courseNb" ninvalid="alert('Please enter a valid course number!');" pattern="[0-9]{3}"/>
                          <br />
-                         <input class="button" type="submit" name="Submit" onsubmit="validity(); return false"> 
+                         
+                        <label class="containerInput">Do you want to be on the waitinglist :</label><br />
+                         <select class="inputBox" required="required" name="selectionBox" id="selectionBox">
+                            <option value="1">Yes</option>
+                             <option value="0">No</option>
+                         </select>
+                         <br />
+                         <br />
+                         <input class="button" type="submit" name="Submit"> 
                          <input class="button" type="reset" value="Cancel"/>
                      </form>
                  </div>
@@ -40,3 +49,4 @@
 
 </body>
 </html>
+
