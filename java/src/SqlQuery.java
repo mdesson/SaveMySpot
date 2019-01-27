@@ -12,36 +12,40 @@ class SqlQuery {
     
     // Database queries
     private static String query = "SELECT Email, Course_Catalog, Course_Code, Waitlist FROM StudentCourseList WHERE Email_sent='0'";
-    private static String querySize = "SELECT COUNT(*) FROM StudentCourseList WHERE Email_sent='0'";
-    private static String update = "UPDATE `StudentCourseList` SET `Email_sent`='1' WHERE Email = ";
+//    private static String querySize = "SELECT COUNT(*) FROM StudentCourseList WHERE Email_sent='0'";
+//    private static String update = "UPDATE `StudentCourseList` SET `Email_sent`='1' WHERE Email = ";
     
-    public static void updateEmailed(String emailAddress, String course) {
-    	String[] courseData = course.split(" ");
-    	
-    	try {
-        	// Connect to database and create Statement
-            Connection con = DriverManager.getConnection(url, user, password);
-            System.out.println("Successfully connected to database");
-            Statement stmt = stmt = con.createStatement();
-            
-            // Get number of results for loop index
-            ResultSet update = stmt.executeQuery(update + emailAddress + " AND " + " Course_Catalog = " + courseData[0]  + " AND " + " Course_Code = " + courseData[1]);
-
-            // Get results of query
-            ResultSet result = stmt.executeQuery(query);
-
-            }
-                        
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
- 
-    }
-    
-    
+//    public static void updateEmailed(String emailAddress, String course) {
+//    	String[] courseData = course.split(" ");
+//    	
+//    	try {
+//        	// Connect to database and create Statement
+//            Connection con = DriverManager.getConnection(url, user, password);
+//            System.out.println("Successfully connected to database");
+//            Statement stmt = stmt = con.createStatement();
+//            
+//            // Get number of results for loop index
+//            ResultSet update = stmt.executeQuery(query + emailAddress + " AND " + " Course_Catalog = " + courseData[0]  + " AND " + " Course_Code = " + courseData[1]);
+//
+//            // Get results of query
+//            ResultSet result = stmt.executeQuery(query);
+//
+//            
+//                        
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+// 
+//    }
+//    
+//    
     // Query database for email addresses and course names
+    
+    
     public static String[][] queryDatabase() {
-        try {
+        String[][] output = {{"error"}};
+
+    	try {
         	// Connect to database and create Statement
             Connection con = DriverManager.getConnection(url, user, password);
             System.out.println("Successfully connected to database");
@@ -52,7 +56,7 @@ class SqlQuery {
             resultSize.last();
             
             // Initialize array to get results
-            String[][] output = new String[resultSize.getRow()][3];
+            output = new String[resultSize.getRow()][3];
             
             // Get results of query
             ResultSet result = stmt.executeQuery(query);
@@ -63,14 +67,13 @@ class SqlQuery {
             	output[i][0] = result.getString("Email");
             	output[i][1] = result.getString("Course_Catalog") + " " + result.getString("Course_Code");
             	output[i][2] = result.getString("Waitlist");
-                return output;
             }
+
                         
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        // Return 2D array for unhandled runtime errors
-        return new String[][] {{"Error"}};
+        return output;
     }
 }

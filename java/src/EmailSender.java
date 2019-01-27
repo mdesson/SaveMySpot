@@ -4,44 +4,25 @@ import javax.mail.internet.*;
 import javax.mail.internet.MimeMessage;
 public class EmailSender {
 
-	// Main Program
-	
-    public static void main(String args[]){
-        
-    	//Test Array
-    	
-    	
-    
-//    	String[] inputs = {"COMP232", "1", "0", "seanheinrichs@gmail.com"};
-    	String[] inputs = new String[3];
-    	
-    	inputs = Query.emailerData("COMP 232");
-    	
-    	System.out.print(inputs.toString());
-    	
-   
-    	
-    		
-    }
-    
+
     // This method checks to see if there is any room on the wait list, if so, return true, otherwise false
-    public static boolean checkWaitList(String[] inputs){
-    	if (inputs[1].equals("0")){
+    public static boolean checkWaitList(String wait){
+    	if (wait.equals("0")){
     		return false;
     	}
     	else
     		return true;
     }
     
-    public static void sendMail(String[] inputs){
+    public static void sendMail(String code, String wait, String email){
     	
     	//Extract pertinent information from the Array
-    	String courseCode = inputs[0];
-    	String waitList = inputs[1];
-    	String userEmail = inputs[3];
+    	String courseCode = code;
+    	String waitList = wait;
+    	String userEmail = email;
     	
     	// Returns true if there is room on the wait list
-    	boolean roomOnWaitList = checkWaitList(inputs);
+    	boolean roomOnWaitList = checkWaitList(wait);
     	
     	try{
             String host ="smtp.gmail.com" ;

@@ -23,8 +23,10 @@ public class Query {
 			String[] output = new String[3];
 
 			for (int i=0; i < json.length(); i++) {
+				
 				JSONObject obj = json.getJSONObject(i);
-				if (courseArray[0] == obj.getString("subject") && courseArray[1] == obj.getString("catalog")) {
+
+				if (courseArray[0].equals(obj.getString("subject")) && courseArray[1].equals(obj.getString("catalog"))) {
 					int WaitCap = Integer.parseInt(obj.getString("waitlistCapacity"));
 					int WaitCurrent = Integer.parseInt(obj.getString("currentWaitlistTotal"));
 					int EnrolCap = Integer.parseInt(obj.getString("enrollmentCapacity"));
@@ -36,8 +38,6 @@ public class Query {
 					return output;
 				}
 			} 
-
-			return output;
 
 		}
 		catch(FileNotFoundException e) {
