@@ -25,3 +25,4 @@ hs_err_pid*
 # Local Files
 .vscode
 config.json
+courses.json
