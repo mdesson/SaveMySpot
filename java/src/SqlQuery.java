@@ -11,7 +11,7 @@ class SqlQuery {
     private static final String password = "";
     
     // Database queries
-    private static String query = "SELECT Email, Course_Catalog, Course_Code FROM StudentCourseList WHERE Waitlist='1'";
+    private static String query = "SELECT Email, Course_Catalog, Course_Code FROM StudentCourseList WHERE Email_sent='1'";
     private static String querySize = "SELECT COUNT(*) FROM StudentCourseList WHERE Waitlist='1'";
     
     
@@ -48,6 +48,8 @@ class SqlQuery {
         
         // Return 2D array for unhandled runtime errors
         return new String[][] {{"Error"}};
+        
+        // TODO: Update 0 to 1 for emailsent
         
     }
 }
