@@ -9,9 +9,18 @@ public class EmailSender {
     public static void main(String args[]){
         
     	//Test Array
-    	String[] inputs = {"COMP232", "1", "0", "seanheinrichs@gmail.com"};
     	
-    	sendMail(inputs);
+    	
+    
+//    	String[] inputs = {"COMP232", "1", "0", "seanheinrichs@gmail.com"};
+    	String[] inputs = new String[3];
+    	
+    	inputs = Query.emailerData("COMP 232");
+    	
+    	System.out.print(inputs.toString());
+    	
+   
+    	
     		
     }
     
