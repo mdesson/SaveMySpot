@@ -10,6 +10,10 @@ html, body {
     padding:10px;
 }
 
+.error {
+    color: #FF0000;
+}
+
 /** Background image */
 body#bg { 
  background: url(pictures/concordia.png) no-repeat center center fixed; 
