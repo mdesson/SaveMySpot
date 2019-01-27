@@ -7,10 +7,10 @@ import java.util.Iterator;
 import java.util.Map; 
 
 // "enrollmentCapacity": "30", "currentEnrollment": "24", "waitlistCapacity": "0", "currentWaitlistTotal": "0",
-// [subject + " " + catalog, boolean(waitlist), boolean(full)]
+// [subject + " " + catalog, boolean(waitlist), boolean(full), email]
 public class Query {
 
-	public static void main(String[] args) {
+	public static String[][] query() {
 		Scanner inputStream = null;
 		
 		try {
@@ -30,6 +30,8 @@ public class Query {
 				  output[i][0] = obj.getString("subject");
 				  output[i][1] = ((WaitCap - WaitCurrent) > 0) ? "1" : "0";
 				  output[i][2] = ((EnrolCap - EnrolCurrent) > 0) ? "1" : "0";
+				  
+				  return output;
 				}
 		}
 		catch(FileNotFoundException e) {
@@ -37,6 +39,9 @@ public class Query {
 		}
 		inputStream.close();
 		
+		return new String[][] {{"error"}};
+		
 	}
+	
 
 }
