@@ -1,20 +1,21 @@
 
 
 function validity(){
-  var input = document.getElementById("courseSubject").value;
-  var input2 = document.getElementById("courseNb").value;
+  var courseSubject = document.getElementById("courseSubject").value;
+  var courseNb = document.getElementById("courseNb").value;
+  var email = document.getElementById("emailCR").value;
 
-  if((validateSubject(input) == true) && (validateCourse(input2) == true)){
-    alert('Submit button pressed' + input + " and " + input2);
-    window.open('mailto:test@example.com');
+
+  if((validateSubject(courseSubject) == true) && (validateCourse(courseNb) == true)){
+    alert('Form was sent! For ' + courseSubject + " and " + courseNb + " for the email " + email );
     return false;
   }
 }
 
 //check if the input for Course Subject is a 4 letter word
-function validateSubject(input){
+function validateSubject(courseSubject){
   var letters = /^[A-Za-z]+$/i;
-  if((input.length == 4) && (input.match(letters))){
+  if((courseSubject.length == 4) && (courseSubject.match(letters))){
     return true;
   }
   else{
@@ -24,8 +25,8 @@ function validateSubject(input){
 }
 
 //check if the input for Course Subject is a 3 integers or more
-function validateCourse(input2){
-  if((input2.length > 2) && (isNaN(input2) == false)){
+function validateCourse(courseNb){
+  if((courseNb.length > 2) && (isNaN(courseNb) == false)){
     return true;
   }
   else{

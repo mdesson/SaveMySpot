@@ -1,92 +1,84 @@
-.wrapper{
-    width: 100%;
-    height: 100%;
-    background-color: linen;
+html, body {
+    font-family: 'Oswald', sans-serif;
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:30em;
+    height:20em;
+    margin-top: -12em; 
+    margin-left: -17em;
+    padding:10px;
 }
 
-.header{
-    width: 100%;
-    height: 250px;
-    float: left;
-    background-color: #B18C62;
-    color: #800000;
-    text-align: left;
+/** Background image */
+body#bg { 
+ background: url(pictures/concordia.png) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
 }
 
-.title{
-    width: 100%;
-    height: 81px;
-    float: left;
-    background-color: #B18C62;
-    color: #800026;
-    text-align: left;
-    text-indent: 100px;
-    font-family: 'Helvetica', sans;
-    font-size: 55px;
-    margin-top: 19px;
+
+/** Form */
+label {
+    font-weight:bold;
+    font-size: 20px;
+    margin-right:10px;
+}
+/** Form */
+.table {
+    display:table;
+    text-align:center;
+    table-layout:fixed;
 }
 
-.school{
-    width: 100%;
-    height: auto;
-    float: left;
-    background-color: white;
-    color: blue;
-    text-align: left;
+/** Form */
+form {
+    border: 2px solid black;
+    width: 500px;
+    padding:50px 0;
+    background: white;
+     border-radius: 5px;
+     transition-duration: 0.4s;
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.body{
-    width: 100%;
-    min-height: 600px;
-    float: left;
-    background-color: white;
-    color: black;
-    text-align: left;
+/** Input spacing between */
+input {
+    margin-bottom:20px;
 }
 
-.footer{
-    width: 100%;
+.inputBox{
+    width: 200px;
+    border-radius: 5px;
     height: 25px;
-    float: left;
-    background-color: #B18C62;
-    color: #800000;
-    text-align: center;
 }
 
-fieldset{
-    border-style: none;
-    text-align: left;
-    margin-left: 150px;
-    margin-top: 50px;
+/** Content table to center insideinputs */
+.container {
+  width: 500px;
+  height:700px;
+  clear: both;
 }
 
-img.campus{
-    width: 30%;
-    float: left;
+/** Button */
+.button {
+border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  border-radius: 5px;
 }
-
-img.logo{
-    width: 40%;
-    float: left;
-}
-
-.legend{
-    font-size: 30px;
-}
-
-.submit{
-    margin-left: 170px;
-    margin-top: 20px;
-}
-
-.line1{
-    width: 100%;
-    height: 5px;
-    background-color: #CFB495;
-}
-
-.line2{
-    width: 100%;
-    height: 10px;
-    background-color: #B18C62;
+.button:hover {
+    background-color: #e7e7e7;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
