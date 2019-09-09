@@ -1,7 +1,7 @@
 # SaveMySpot
 
-Project nameConUHack IV - SaveMySpot
-Jan 2019
+Project Name: ConUHacks IV - SaveMySpot
+January 2019
 
 Project descriptionSaveMySpot is a web application where users can find out when spots become available in the courses they want to to register for. After the user supplies a course code and their e-mail on the website they are officially registered! They will then receive an e-mail whenever there is space in the course/wait-list so they don't have to worry about constantly checking themselves.
 
